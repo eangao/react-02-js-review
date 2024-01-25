@@ -627,3 +627,98 @@ const adventureBooks = books
   )
   .map((book) => book.title);
 adventureBooks;
+
+/////////////////////////////////////////////////////////////
+// The Array reduce Method
+/////////////////////////////////////////////////////////////
+// All right, so we tackled the map
+// and the filter method
+// and so, now, it's time for the one method
+// that rules them all, which is the reduced method.
+
+// So, the reduced method is really the most versatile
+// and the most powerful of all array methods in JavaScript.
+// So, in fact, we could, probably, implement
+// all the other methods, simply using the reduced method,
+// but that would be a little bit too much work.
+// And so, that's why we have all of these other methods
+// which are a lot easier to use.
+
+// So, I will really not go deep into the reduced method, here,
+// because we could spend hours just with this method,
+// but I will just show you one of the most common use cases,
+// which is to add together numbers
+// or, basically, to perform any operation,
+// or mathematical operations, with numbers.
+
+// So, let's say that, for some reason,
+// we wanted to read all of the books in the array
+// and we wanted to know how many pages we would have to read.
+// So, the solution is to add together
+// all of these pages properties
+// of all of the books in the array, right?
+// And so, for that, we can use the reduce method.
+
+// Now, the reduce method also takes in a callback function
+// which will be executed for each element of the array.
+// And, as a second argument,
+// it also takes in a starter value, basically.
+// But before we go into these,
+// let's, actually, understand what the reduce method does
+// and what it's used for.
+// So, it is called the reduce method
+// because the goal of reduce is to reduce, basically,
+// the entire array to just one value.
+
+// But, here, the callback function
+// will be a little bit different.
+// So, the function that we pass in, here,
+// will not only get caught with the current element
+// but also with the current value of the accumulator
+// which starts at zero.
+
+// So, basically, in this case,
+// the pages of all the books combined, which starts at zero.
+// And so, in the first iteration
+// the accumulator will still be zero.
+// So, this function, here, will get called
+// for the first element and then the accumulator will be zero
+// and the book will be the current book.
+// And so, then we add together the current accumulator,
+// so the current pages or books, so to say,
+// which is still zero plus these 1,216.
+// And so, we can imagine that the second value, here,
+// then becomes 1,216 after this first iteration.
+
+// And so, therefore, in the next iteration,
+// when we go to the second object,
+// the current accumulator is already 1,216.
+// So here, again, it will, in the second iteration,
+// be already 1,216.
+// And then, on top of that, we add 295.
+// So, that's then the current book pages.
+
+// And so, then, in the next iteration
+// the accumulator will already be 1,216 plus 295
+// which is like 1,500 something.
+// And then, on top of that, we add this number of pages,
+// and so it goes, all the way, until the end.
+
+// Now, here, I just like to, in this case,
+// to replace the accumulator value with sum,
+// so calling it just sum,
+// because that is what it's actually doing.
+const pagesAllBooks = books.reduce((sum, book) => sum + book.pages, 0);
+pagesAllBooks;
+
+// But we can also do very, very complex things,
+// as I said, in the beginning,
+// because this initial value, here,
+// doesn't have to be a number.
+// It could also be an array or it could be an object.
+// And so, what this means
+// is that we could do, really,
+// anything that we do with map or filter
+// also with a reduce.
+const pagesAllBooks2 = books.reduce((acc, book) => acc + book.pages, []);
+pagesAllBooks2;
