@@ -142,3 +142,40 @@ function getBooks() {
 function getBook(id) {
   return data.find((d) => d.id === id);
 }
+///////////////////////////////////////////
+// Destructuring with object
+//////////////////////////////////////////
+
+const book = getBook(2);
+book;
+
+// const title = book.title;
+// const author = book.author;
+
+// Now here, what's crucial is
+// that we actually give these variable names here
+// exactly the same name as the properties in the object.
+const { title, author, pages, publicationDate, genres, hasMovieAdaptation } =
+  book;
+
+console.log(author, author, genres);
+
+////////////////////////////////////////////////////
+// Destructuring of array
+////////////////////////////////////////////////////
+// const primaryGenre = genres[0];
+// const secodaryGenre = genres[1];
+
+// using array destructuring
+
+// And then here we have the exact same result.
+// So basically the first variable that we define here
+// this in this way, in this destructuring
+// will take the first element out of the array
+// and assign it to this variable.
+// And then here, of course, the second one.
+// So it takes the second element out
+// of the array and assigns it to this variable.
+const [primaryGenre, secodaryGenre] = genres;
+
+console.log(primaryGenre, secodaryGenre);
