@@ -267,3 +267,19 @@ updatedBook2;
 // So very, very important.
 // So it's fundamental that you know this
 // as we go through the course.
+
+//////////////////////////////////////////////////////////
+// Template Literals - ``
+//////////////////////////////////////////////////////////
+// So template literals are an ES6 JavaScript feature
+// which allows us to very easily create strings
+// that contain some JavaScript variables,
+// or actually that contains any JavaScript expression,
+// inside of a string.
+
+//so anything that immediately produces a value,
+// can be placed here inside this block.
+const summary = `${title}, a ${pages}-page long book, was written by ${author} and published in ${
+  publicationDate.split("-")[0]
+}`; //
+summary;
