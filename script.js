@@ -146,7 +146,7 @@ function getBook(id) {
 // Destructuring with object
 //////////////////////////////////////////
 
-const book = getBook(2);
+const book = getBook(3);
 book;
 
 // const title = book.title;
@@ -392,9 +392,10 @@ spanishTranslation;
 // because this works for all the falsy values
 // such as zero as well.
 // Sometimes that can have some consequences.
-console.log(book.reviews.librarything.reviewsCount);
-const countWrong = book.reviews.librarything.reviewsCount || "no data";
-countWrong;
+
+// console.log(book.reviews.librarything.reviewsCount);
+// const countWrong = book.reviews.librarything.reviewsCount || "no data";
+// countWrong;
 
 // but not when it is zero.
 // So when this value is zero, it is a falsy value.
@@ -408,15 +409,70 @@ countWrong;
 // which is called the nullish coalescing operator.
 
 /////////////
-// nullish coalescing operator.
+// nullish coalescing operator - ??
 
 // it works very similarly to the or operator,
 // but it does also short circuit for falsy values.
 
-const count = book.reviews.librarything.reviewsCount ?? "no data";
-count;
+// const count = book.reviews.librarything.reviewsCount ?? "no data";
+// count;
 
 // So this nullish coalescing operator
 // will only return the second value
 // when the first value is null or undefined,
 // but not when it is zero or an empty string.
+
+////////////////////////////////////////////////////////////////////
+// Optional Chaining  -  ?
+////////////////////////////////////////////////////////////////////
+
+function getTotalReviewCount(book) {
+  // the problem is
+  // that book dot reviews, dot libraryanything
+  // right now is undefined.
+  // So basically in JavaScript
+  // this part will then get replaced by undefined.
+  // And then essentially we are reading
+  // undefined dot reviewsCount
+  // which, of course, doesn't exist.
+  // And then it results in this error right here.
+
+  // But, fortunately for us, modern JavaScript has a solution
+  // for this, which is called optional chaining.
+  // And so with optional chaining
+  // we can basically ask JavaScript to only keep asking here
+  // for these next properties
+  // in case that what comes before it actually exists.
+
+  //   So what happens now is that whenever this here is undefined,
+  // then JavaScript will no longer even try to
+  // read reviewsCount out of this.
+  // And so this is why we call this optional chaining.
+  // So the chain here only continues in case
+  // that this part here actually is not undefined
+  // or not null.
+  const goodreads = book.reviews?.goodread?.reviewsCount ?? 0;
+  const librarything = book.reviews?.librarything?.reviewsCount ?? 0;
+
+  return goodreads + librarything;
+}
+
+console.log(getTotalReviewCount(book));
+
+//  this is helpful
+// whenever we are not sure that all the values that we expect
+// exist in an object.
+// So before we had this here, we would have to first check
+// if actually books dot reviews, dot libraryanything exists.
+// And only then we could read reviewsCount out of that
+// which would really be a lot of work.
+// Because for example, let's say we're also not sure
+// if even reviews dot libraryanything exists.
+
+// So it would be even safer to do this also here.
+// And why not also here?
+// Because there might be some situation where
+// maybe the book has no Goodreads reviews.
+// So let's simply do this always,
+// at least always we are not sure about the data structure
+// of the data we are receiving.
