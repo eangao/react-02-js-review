@@ -595,3 +595,35 @@ const essentialData2 = books.map((book) => ({
 }));
 
 essentialData2;
+
+//////////////////////////////////////////////////////////////////
+// The Array filter Method
+//////////////////////////////////////////////////////////////////
+
+// the filter method.
+// And, as the name says,
+// we can use the filter method in order to filter out
+// some elements of the array based on a condition.
+
+// So let's say that we want to create an array
+// which only has books that have more than 500 pages.
+
+const longBooks = books.filter((book) => book.pages > 500);
+longBooks;
+
+// So after this filter, we can chain on another filter.
+// And that's possible simply because this one here
+// returns a new array.
+// And on arrays, we can call filter, right?
+// And, therefore, we can call filter here again.
+const longBooksWithMovie = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation);
+longBooksWithMovie;
+
+const adventureBooks = books
+  .filter(
+    (book) => book.genres.includes("adventure") //So includes always returns either true or false,
+  )
+  .map((book) => book.title);
+adventureBooks;
