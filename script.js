@@ -297,3 +297,28 @@ summary;
 const pagesRange = pages > 1000 ? "over a thousand" : " less than 1000";
 pagesRange;
 console.log(`The book has ${pagesRange} pages.`);
+
+/////////////////////////////////////////////////////////////
+// Arrow Functions
+/////////////////////////////////////////////////////////////
+// So, arrow functions are a new way of writing functions
+// that have been introduced into JavaScript in ES6,
+// and they are very helpful for writing quick
+// and short one-line functions.
+// Now, many people actually use arrow functions
+// for all functions now, but I personally really don't like
+// that and I only find them useful for,
+// well, as I said, these one-liner functions.
+
+// function declation
+// function getYear(str) {
+//   return str.split("-")[0];
+// }
+
+//////////////////////////
+// Arrow function
+
+//function expresion
+const getYear = (str) => str.split("-")[0];
+
+console.log(getYear(publicationDate));
