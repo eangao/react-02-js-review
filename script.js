@@ -146,7 +146,7 @@ function getBook(id) {
 // Destructuring with object
 //////////////////////////////////////////
 
-const book = getBook(2);
+const book = getBook(1);
 book;
 
 // const title = book.title;
@@ -176,6 +176,94 @@ console.log(author, author, genres);
 // And then here, of course, the second one.
 // So it takes the second element out
 // of the array and assigns it to this variable.
-const [primaryGenre, secodaryGenre] = genres;
 
-console.log(primaryGenre, secodaryGenre);
+// const [primaryGenre, secodaryGenre] = genres;
+// console.log(primaryGenre, secodaryGenre);
+
+////////////////////////////////////////////////////////////
+// Rest/Spread Operator
+////////////////////////////////////////////////////////////
+
+/////////////////////////////
+// Rest Operator - Array
+const [primaryGenre, secodaryGenre, ...otherGenres] = genres; // otherGenres sholud be place at the end of the operator
+console.log(primaryGenre, secodaryGenre, otherGenres);
+
+///////////////////////////////
+// Spread Opearator - Array
+
+// We want one array which contains all
+// of these values here individually.
+// So all of these six genres
+// one by one and not one array, which contains five genres
+// and then simply the other genre in the end.
+// So what we can do is to use the spread operator.
+const newGenres = [...genres, "epic fantasy"];
+newGenres;
+
+// and, of course, we could also place it at the end.
+// And then epic fantasy would simply be
+// at the beginning of the new array.
+const newGenres2 = ["epic fantasy", ...genres];
+newGenres2;
+
+//////////////////////////////////////
+// Spread Operator - Object
+
+//  the spread operator is even more important
+// because it allows us to add new properties
+// and also to update existing ones.
+
+// this is how we add new properties
+// to an object using the spread operator.
+const updatedBook = { ...book, moviePublicationDate: "2001-12-19" };
+updatedBook;
+
+// But, as I said in the beginning,
+// we can also use it to basically update properties,
+// so by simply overriding them.
+// So we see that we have this pages property
+// but let's imagine for some reason that it is wrong.
+// And so we can simply overwrite that here.
+// So let's say the number of pages is actually 1210.
+// So if we inspect that again,
+// then you see that now it is actually 1210.
+// And the reason that works is
+// because, as I mentioned in the beginning,
+// this syntax here basically takes all the elements,
+// so all the properties of the object, into this new object.
+// And then of course will contain the original pages property.
+// And so then we have two pages properties
+// and so then the second one,
+// so this last one, will override the first one.
+
+// So whenever we want to do this,
+// the spread-out original object needs to be first.
+const updatedBook2 = {
+  ...book,
+
+  // Adding a new property
+  moviePublicationDate: "2001-12-19",
+
+  // Overwriting an existing property
+  pages: 1210,
+};
+updatedBook2;
+
+// And I'm focusing so much here
+// on this because this is going to be
+// really, really important when we work with React
+// because when we want to update objects in state,
+// which you will learn later what that is,
+// we will need to use this technique.
+// And we will also talk
+// about this a bit later again in this section.
+// But for now, just keep in mind
+// that when we want to create a new object
+// and then add new properties to it or override existing ones
+// this is how we do it.
+// So we use the spread operator
+// and the same is true for a race.
+// So very, very important.
+// So it's fundamental that you know this
+// as we go through the course.
