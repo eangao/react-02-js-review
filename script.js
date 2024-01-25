@@ -146,7 +146,7 @@ function getBook(id) {
 // Destructuring with object
 //////////////////////////////////////////
 
-const book = getBook(1);
+const book = getBook(2);
 book;
 
 // const title = book.title;
@@ -322,3 +322,101 @@ console.log(`The book has ${pagesRange} pages.`);
 const getYear = (str) => str.split("-")[0];
 
 console.log(getYear(publicationDate));
+
+////////////////////////////////////////////////////////////////
+// Short-Circuiting And Logical Operators: &&, ||, ??
+////////////////////////////////////////////////////////////////
+
+// So in JavaScript, some logical operators,
+// such as the && and the || operator,
+// have a feature called short circuiting.
+
+// So short circuiting in logical operators,
+// means that, in certain conditions,
+// the operator will immediately return the first value
+// and not even look at the second value.
+// And this probably sounds confusing
+
+console.log(true && "some string"); // no short circuit
+
+// when the first value is false.
+// So here if we have false, then there is a short circuit
+// and the operator does not even look at the second value.
+// So instead it immediately returns the first one here.
+// And that's gonna be quite helpful
+// basically in order to use this as an if.
+console.log(false && "some string"); // short circuit
+
+console.log(hasMovieAdaptation && "This book has a moview");
+
+// truthy and falsy values.
+
+// And this also works with so-called truthy and falsy values.
+// So a truthy value is basically any value
+// that is not a falsy value.
+// And the falsy value, just write that here,
+// is zero and, empty string, null and undefined.
+// And I think there's actually one more,
+// which I can't think of right now.
+// So yeah, these are the ones that actually matter.
+// So this one is not one of these falsy values
+// and, therefore, it's a truthy value,
+// which means that for the end operator,
+// it is as if this was actually really a true value
+// because, basically, behind the scenes
+// this gets converted to true.
+// And so since this is true,
+// we get the second value out of the operation.
+// But if we use a falsy value, let's say zero,
+// then we get that first one.
+// So here once again, we have short circuiting in action
+// because this is a falsy value,
+
+///////////////////////////////
+//falsy: 0, '', null, undefined
+
+// && operator
+console.log("jonas" && "Some string");
+console.log(0 && "Some string");
+
+// || operator
+console.log(true || "Some string");
+console.log(false || "Some string");
+
+console.log(book.translations.spanish);
+
+const spanishTranslation = book.translations.spanish || "NOT TRANSLATED";
+spanishTranslation;
+
+// however, this can also go wrong
+// because this works for all the falsy values
+// such as zero as well.
+// Sometimes that can have some consequences.
+console.log(book.reviews.librarything.reviewsCount);
+const countWrong = book.reviews.librarything.reviewsCount || "no data";
+countWrong;
+
+// but not when it is zero.
+// So when this value is zero, it is a falsy value.
+// And so when this is a falsy value,
+// which zero is,
+// the result of this operator will be the second part,
+// which in this case is, again, wrong.
+
+// Now to solve this
+// JavaScript has recently added a new logical operator
+// which is called the nullish coalescing operator.
+
+/////////////
+// nullish coalescing operator.
+
+// it works very similarly to the or operator,
+// but it does also short circuit for falsy values.
+
+const count = book.reviews.librarything.reviewsCount ?? "no data";
+count;
+
+// So this nullish coalescing operator
+// will only return the second value
+// when the first value is null or undefined,
+// but not when it is zero or an empty string.
