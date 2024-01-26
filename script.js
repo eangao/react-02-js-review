@@ -722,3 +722,81 @@ pagesAllBooks;
 // also with a reduce.
 const pagesAllBooks2 = books.reduce((acc, book) => acc + book.pages, []);
 pagesAllBooks2;
+
+/////////////////////////////////////////////////////////
+// The Array sort Method
+/////////////////////////////////////////////////////////
+const arr = [3, 7, 1, 9, 6];
+
+//sort in ascending way
+const ascSorted = arr.sort((a, b) => a - b);
+
+// And indeed, it is now sorted in an ascending way.
+// So starting from the lowest number,
+// all the way to the highest.
+// Now very, very briefly, what happens here is that
+// basically JavaScript goes over the array,
+// so it loops through it, and it caught this function here.
+// And a and b are always the current value and the next value.
+// And then here in the callback function,
+// when we return a negative value,
+// then these two numbers will basically be sorted
+// in an ascending way.
+// So the small number will come first,
+// and then the biggest number will come afterwards.
+// And if we do the opposite,
+// so if we return a positive number,
+// then while the opposite will happen,
+// then these two values will be sorted in a descending way.
+// And so, we return these positive or negative numbers
+// simply by subtracting one minus the other.
+// So here a and b in this example will be three and seven,
+// and so then three minus seven is minus four.
+// And so, yeah, they will then be sorted in an ascending way,
+// as I said before.
+// But that's not really important.
+// You should just basically follow this as a recipe.
+// So when you do a minus b,
+// it will be sorted in an ascending way.
+ascSorted;
+
+////
+//
+//sort in descending way
+
+// So when you do a minus b,
+// it will be sorted in an ascending way.
+// When you do b minus a, then descending.
+// So indeed, now, we start with nine and with one.
+
+const descSorted = arr.sort((a, b) => b - a);
+descSorted;
+
+// Now, what's very surprising about the sort method
+// is what happens when we now check out arr.
+// So arr itself has been sorted, as well, right?
+arr;
+
+// arr.sort - sort  -> mutate the data
+
+// 'Cause it already changed this original array anyway.
+// However, usually we do not want that to happen,
+// especially in a front end framework like React,
+// which really does not like us mutating data.
+// So, a nice trick that we can do here
+// is to first take a copy of the array,
+
+const arr2 = [3, 7, 1, 9, 6];
+
+const sorted = arr2.slice().sort((a, b) => a - b);
+sorted;
+arr2;
+
+// But now going back to a more practical examples,
+// because rarely we have an array like this
+// that we need to sort,
+// but usually we always have an array of objects.
+
+// sorted in an ascending way
+const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
+sortedByPages;
