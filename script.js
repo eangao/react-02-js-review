@@ -800,3 +800,58 @@ arr2;
 // sorted in an ascending way
 const sortedByPages = books.slice().sort((a, b) => b.pages - a.pages);
 sortedByPages;
+
+/////////////////////////////////////////////////////
+// Working With Immutable Arrays
+/////////////////////////////////////////////////////
+
+// In React, many operations need
+// to be immutable so operations
+// where we do not manipulate the underlying data structure.
+// And so therefore, it's quite important
+// to know how to add element to a race,
+// how to delete elements, and also to update elements
+// all without mutating the original underlying array.
+// Now these techniques that we're going to learn here
+// are absolutely essential for React development
+// but the good news is that they always work in the same way.
+// And so if you understand here how it works,
+// then you will be well prepared for the rest of the course.
+// So as I mentioned, what we want to do here is to learn how
+// to add elements, how to delete elements,
+// and how to update elements of an array
+// without changing the original one.
+
+// 1) Add book object to array
+const newBook = {
+  id: 6,
+  title: "harry Potter and the Chanmber of Secrets",
+  author: "J. K. Rowling",
+};
+
+// And so all we need to do is to spread all the books here
+// into this newly created array,
+// and then simply add another book, so another object.
+// And then we take a look at this right here.
+// You see that now we have six of them
+// and the last one is this one that we just created.
+// And again, we could add this also to the beginning.
+// So right here, but it's most common to simply add a new book
+// right to the end of the array.
+
+// And so now here we add another one.
+// And in fact, we did already learn how we create a new array
+// based on an original array
+// and then adding some other element.
+const booksAfterAdd = [...books, newBook];
+booksAfterAdd;
+
+// 2) Delete book object from array
+const booksAfterDelete = booksAfterAdd.filter((book) => book.id !== 3);
+booksAfterDelete;
+
+// 3) Update book object in the array
+const bookAfterUpdate = booksAfterDelete.map((book) =>
+  book.id === 1 ? { ...book, pages: 1210 } : book
+);
+bookAfterUpdate;
