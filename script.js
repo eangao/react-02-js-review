@@ -863,8 +863,47 @@ function getBook(id) {
 //dummy aoi
 // https://jsonplaceholder.typicode.com/
 
+// fetch("https://jsonplaceholder.typicode.com/todos/")
+//   .then((res) => res.json())
+//   .then((data) => console.log(data));
+
+// console.log("elmar");
+
+////////////////////////////////////////////////////////////////////////
+// Asynchronous JavaScript: Async/Await
+////////////////////////////////////////////////////////////////////////
+
+// So, in the previous lecture, we learned how
+// to handle fetching data using promise methods.
+// But in this lecture, let's take it one step further
+// and learn how to do the exact same thing with a much nicer
+// and cleaner syntax called async/await.
+// So, this syntax that we just learned here works really well
+// but it's not the most easy thing to work with, I would say.
+// It's not the most beautiful code, in a way.
+// And so, we can basically implement this logic here
+// in a different way using async functions
+// and the await keyword.
+
+// Now, everything I explained to you in the previous lecture
+// is still 100% valid, and the whole idea
+// behind promises doesn't go away.
+// The only thing that's going to go away
+// is these then handlers right here.
+// So, we're going to again, do it in a cleaner way.
+
 fetch("https://jsonplaceholder.typicode.com/todos/")
   .then((res) => res.json())
   .then((data) => console.log(data));
 
+async function getTodos() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/todos/");
+  const data = await res.json();
+  console.log(data);
+
+  return data;
+}
+
+const todos = getTodos();
+console.log(todos); // todos return a promise
 console.log("elmar");
